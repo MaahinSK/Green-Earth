@@ -22,8 +22,8 @@
 
   <!-- Hero -->
   <section class="relative flex justify-center items-center py-8 md:py-12 bg-green-100 overflow-hidden">
-    <!-- Left image - hidden on mobile -->
-    <img src="assets/hero-leaf1.png" alt="Left Plant" 
+
+    <img src="assets/hero-leaf1.png" alt="Left er Plant" 
          class="hidden md:block absolute left-0 top-1/2 transform -translate-y-1/2 w-40 md:w-60">
 
     <!-- Hero content -->
@@ -33,8 +33,7 @@
       <button class="mt-4 px-6 py-2 bg-yellow-400 rounded-full hover:bg-yellow-500">Get Involved</button>
     </div>
 
-    <!-- Right image - hidden on mobile -->
-    <img src="assets/hero-leaf2.png" alt="Right Plant" 
+    <img src="assets/hero-leaf2.png" alt="Right er Plant" 
          class="hidden md:block absolute right-0 top-1/2 transform -translate-y-1/2 w-40 md:w-60">
   </section>
 
@@ -72,26 +71,14 @@
     </aside>
   </main>
 
-  <!-- Alert Notification -->
-  <div id="cart-alert" class="fixed bottom-4 right-4 bg-green-600 text-white px-6 py-4 rounded-lg shadow-lg transform translate-y-20 transition-transform duration-300 z-50 hidden">
-    <div class="flex items-center">
-      <i class="fa-solid fa-check-circle text-xl mr-3"></i>
-      <div>
-        <p class="font-semibold" id="alert-message"></p>
-      </div>
-      <button class="ml-4 text-white" onclick="hideAlert()">
-        <i class="fa-solid fa-times"></i>
-      </button>
-    </div>
-  </div>
 
   <!-- Modal -->
   <div id="tree-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden p-4">
     <div class="bg-white rounded-lg shadow-lg w-full max-w-md max-h-[90vh] overflow-y-auto">
       <div class="relative">
-        <!-- Close button -->
+   
         <button id="modal-close" class="absolute top-4 right-4 bg-white rounded-full p-2 shadow-md z-10">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg  class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
@@ -104,16 +91,16 @@
         
         <!-- Content -->
         <div id="modal-content">
-          <!-- Image section -->
+          
           <div class="h-64 w-full">
             <img id="modal-tree-image" src="" alt="" class="w-full h-full object-cover rounded-t-lg">
           </div>
           
-          <!-- Content section -->
+          
           <div class="p-6">
             <h3 id="modal-tree-name" class="text-2xl font-bold text-green-800 mb-2"></h3>
             
-            <!-- Category and price stacked vertically -->
+
             <div class="mb-4">
               <div class="flex items-center mb-2">
                 <i class="fa-solid fa-tag text-green-600 mr-2"></i>
@@ -142,8 +129,90 @@
       </div>
     </div>
   </div>
+   
+  <!-- About-->
+   <h2 class="text-3xl font-bold text-gray-800 text-center">About the Campaign</h2>
+<section class="bg-green-50 py-16 px-6">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
 
-  <!-- External JS -->
+    <div>
+      <img src="assets/about.png" alt="About the Campaign" class="rounded-lg shadow-md">
+    </div>
+    
+    <div>
+      
+      <p class="text-gray-600 mb-4">
+        Green Earth is a global tree plantation initiative dedicated to fighting climate change. 
+        Since our start, we've planted over 500,000 trees worldwide. By joining our campaign, you help 
+        restore forests, create habitats for wildlife, and combat global warming.
+      </p>
+      <ul class="list-disc list-inside text-gray-600 space-y-2">
+        <li>Restoration of natural habitats</li>
+        <li>Improvement of air quality</li>
+        <li>Support for local communities</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Impact -->
+<section class="bg-green-100 py-16 px-6">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-3xl font-bold text-gray-800 mb-12">Our Impact</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white p-6 rounded-lg shadow transition transform hover:scale-105 hover:shadow-xl">
+        <h3 class="text-3xl font-bold text-green-700">500K+</h3>
+        <p class="text-gray-600">Trees Planted</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow transition transform hover:scale-105 hover:shadow-xl">
+        <h3 class="text-3xl font-bold text-green-700">120+</h3>
+        <p class="text-gray-600">Communities Involved</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow transition transform hover:scale-105 hover:shadow-xl">
+        <h3 class="text-3xl font-bold text-green-700">30+</h3>
+        <p class="text-gray-600">Countries Reached</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Plant a Tree Section -->
+<section class="bg-green-800 py-20 px-6">
+  <div class="max-w-md mx-auto bg-green-700 p-8 rounded-lg shadow-lg text-center">
+    <h2 class="text-2xl font-semibold text-white mb-6">Plant a Tree Today</h2>
+    
+    <!-- Form -->
+    <form action="#" class="space-y-4">
+      <input type="text" placeholder="Your Name" 
+             class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+      
+      
+      <input type="email" placeholder="Your Email Address" 
+             class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+    
+      <select class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+        <option value="">Number of Trees</option>
+        <option value="1">1 Tree - $5</option>
+        <option value="5">5 Trees - $25</option>
+        <option value="10">10 Trees - $50</option>
+      </select>
+      
+      <button type="submit" 
+              class="w-full bg-yellow-400 text-green-900 font-semibold py-3 rounded-full hover:bg-yellow-500 transition">
+        Donate Now
+      </button>
+    </form>
+  </div>
+</section>
+
+
+
+<footer class="bg-green-900 text-white py-6">
+  <div class="max-w-6xl mx-auto text-center text-sm">
+    © 2025 Green Earth. All Rights Reserved.
+  </div>
+</footer>
+
   <script src="script.js"></script>
 </body>
 </html>

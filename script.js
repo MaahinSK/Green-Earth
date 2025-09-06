@@ -23,7 +23,7 @@ let currentTree = null;
 // Fetch categories
 async function loadCategories() {
   try {
-    // Show loading spinner
+    //  loading spinner
     categoriesEl.innerHTML = `
       <li class="text-center py-4">
         <i class="fa-solid fa-spinner fa-spin text-green-600 text-xl"></i>
@@ -35,7 +35,7 @@ async function loadCategories() {
     const data = await res.json();
     const categories = data.categories;
 
-    // Add "All Trees" manually
+    // All Trees
     categoriesEl.innerHTML = `
       <li><button class="category-btn w-full text-left px-3 py-2 bg-green-600 text-white rounded" data-category="all">All Trees</button></li>
     `;
@@ -50,7 +50,7 @@ async function loadCategories() {
       `;
     });
 
-    // Add event listeners
+    // event listeners
     document.querySelectorAll(".category-btn").forEach(btn => {
       btn.addEventListener("click", () => {
         document.querySelectorAll(".category-btn").forEach(b => {
@@ -76,7 +76,7 @@ async function loadCategories() {
 // Fetch and display trees
 async function loadTrees(category = "all") {
   try {
-    // Show loading spinner
+    // loading spinner
     treeCardsEl.innerHTML = `
       <div class="col-span-full text-center py-8">
         <i class="fa-solid fa-spinner fa-spin text-green-600 text-2xl"></i>
@@ -118,19 +118,19 @@ async function loadTrees(category = "all") {
       </div>
     `).join("");
 
-    // Add to cart functionality
+    // Add to cart function
     document.querySelectorAll(".add-to-cart").forEach(btn => {
       btn.addEventListener("click", () => {
         const name = btn.dataset.name;
         const price = parseInt(btn.dataset.price);
         addToCart({ name, price });
         
-        // Show alert notification
+        // alert notification
         alert(`${name} added to cart!`);
       });
     });
 
-    // Add image click functionality for modal
+    //  click functionality for modal
     document.querySelectorAll(".tree-image").forEach(img => {
       img.addEventListener("click", () => {
         const treeData = JSON.parse(img.dataset.tree.replace(/&#39;/g, "'"));
@@ -148,11 +148,11 @@ async function loadTrees(category = "all") {
   }
 }
 
-// Show tree modal
+// tree modal
 function showTreeModal(tree) {
   currentTree = tree;
   
-  // Show loading state initially
+  //  loading state 
   modalLoading.classList.remove("hidden");
   modalContent.classList.add("hidden");
   
@@ -206,11 +206,11 @@ function removeFromCart(index) {
   cart.splice(index, 1);
   renderCart();
   
-  // Show removal notification
+  //removal notification
   alert(`${removedItem.name} removed from cart`);
 }
 
-// Close modal when clicking outside
+// Close modal 
 treeModal.addEventListener("click", (e) => {
   if (e.target === treeModal) {
     treeModal.classList.add("hidden");
