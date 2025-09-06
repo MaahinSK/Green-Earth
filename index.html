@@ -2,15 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Green Earth</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body class="bg-green-50 font-sans">
 
   <!-- Header -->
-  <header class="bg-green-700 text-white flex justify-between items-center px-6 py-4">
-    <h1 class="text-xl font-bold px-6">Green Earth</h1>
-    <nav class="space-x-6">
+  <header class="bg-green-700 text-white flex flex-col md:flex-row justify-between items-center px-4 md:px-6 py-4">
+    <h1 class="text-xl font-bold px-4 md:px-6 mb-2 md:mb-0">Green Earth</h1>
+    <nav class="space-x-4 md:space-x-6 mb-4 md:mb-0">
       <a href="#" class="hover:underline">About</a>
       <a href="#" class="hover:underline">Gallery</a>
       <a href="#" class="hover:underline">Plant a Tree</a>
@@ -19,46 +21,127 @@
   </header>
 
   <!-- Hero -->
-  <section class="relative flex justify-center items-center py-12 bg-green-100 overflow-hidden">
-    <!-- Left image -->
-    <img src="assets/hero-leaf1.png" alt="Left er Plant" 
-         class="absolute left-0 top-1/2 transform -translate-y-1/2 w-40 md:w-60">
+  <section class="relative flex justify-center items-center py-8 md:py-12 bg-green-100 overflow-hidden">
+    <!-- Left image - hidden on mobile -->
+    <img src="assets/hero-leaf1.png" alt="Left Plant" 
+         class="hidden md:block absolute left-0 top-1/2 transform -translate-y-1/2 w-40 md:w-60">
 
     <!-- Hero content -->
     <div class="text-center max-w-2xl px-4">
-      <h2 class="text-3xl font-bold">Plant a Tree, Grow a Future</h2>
-      <p class="mt-2 text-gray-700">Join our mission to plant 1 million trees and make the Earth greener for future generations.</p>
+      <h2 class="text-2xl md:text-3xl font-bold">Plant a Tree, Grow a Future</h2>
+      <p class="mt-2 text-gray-700 text-sm md:text-base">Join our mission to plant 1 million trees and make the Earth greener for future generations.</p>
       <button class="mt-4 px-6 py-2 bg-yellow-400 rounded-full hover:bg-yellow-500">Get Involved</button>
     </div>
 
-    <!-- Right image -->
-    <img src="assets/hero-leaf2.png" alt="Right eer Plant" 
-         class="absolute right-0 top-1/2 transform -translate-y-1/2 w-40 md:w-60">
+    <!-- Right image - hidden on mobile -->
+    <img src="assets/hero-leaf2.png" alt="Right Plant" 
+         class="hidden md:block absolute right-0 top-1/2 transform -translate-y-1/2 w-40 md:w-60">
   </section>
 
   <!-- Main Content -->
-  <main class="grid grid-cols-12 gap-6 px-8 py-10">
+  <main class="grid grid-cols-1 md:grid-cols-12 gap-6 px-4 md:px-8 py-8 md:py-10">
     
     <!-- Categories -->
-    <aside class="col-span-2">
+    <aside class="md:col-span-2 mb-6 md:mb-0">
       <h3 class="font-bold mb-4">Categories</h3>
-      <ul id="categories" class="space-y-2"></ul>
+      <ul id="categories" class="space-y-2">
+        <li class="text-center py-4">
+          <i class="fa-solid fa-spinner fa-spin text-green-600 text-xl"></i>
+          <p class="text-sm text-gray-600 mt-2">Loading categories...</p>
+        </li>
+      </ul>
     </aside>
 
     <!-- Trees Section -->
-    <section class="col-span-7">
+    <section class="md:col-span-7">
       <h3 class="text-center font-bold text-xl mb-6">Choose Your Trees</h3>
-      <div id="tree-cards" class="grid grid-cols-3 gap-6"></div>
+      <div id="tree-cards" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+        <div class="col-span-full text-center py-8">
+          <i class="fa-solid fa-spinner fa-spin text-green-600 text-2xl"></i>
+          <p class="text-gray-600 mt-2">Loading trees...</p>
+        </div>
+      </div>
     </section>
 
     <!-- Cart -->
-    <aside class="col-span-3 bg-white shadow p-4 rounded-xl">
+    <aside class="md:col-span-3 bg-white shadow p-4 rounded-xl mt-6 md:mt-0">
       <h3 class="font-bold mb-4">Your Cart</h3>
       <ul id="cart-items" class="space-y-2"></ul>
       <hr class="my-4">
       <p class="font-bold">Total: <span id="cart-total">৳0</span></p>
     </aside>
   </main>
+
+  <!-- Alert Notification -->
+  <div id="cart-alert" class="fixed bottom-4 right-4 bg-green-600 text-white px-6 py-4 rounded-lg shadow-lg transform translate-y-20 transition-transform duration-300 z-50 hidden">
+    <div class="flex items-center">
+      <i class="fa-solid fa-check-circle text-xl mr-3"></i>
+      <div>
+        <p class="font-semibold" id="alert-message"></p>
+      </div>
+      <button class="ml-4 text-white" onclick="hideAlert()">
+        <i class="fa-solid fa-times"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="tree-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden p-4">
+    <div class="bg-white rounded-lg shadow-lg w-full max-w-md max-h-[90vh] overflow-y-auto">
+      <div class="relative">
+        <!-- Close button -->
+        <button id="modal-close" class="absolute top-4 right-4 bg-white rounded-full p-2 shadow-md z-10">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        
+        <!-- Loading state -->
+        <div id="modal-loading" class="text-center py-12 hidden">
+          <i class="fa-solid fa-spinner fa-spin text-green-600 text-2xl"></i>
+          <p class="text-gray-600 mt-2">Loading tree details...</p>
+        </div>
+        
+        <!-- Content -->
+        <div id="modal-content">
+          <!-- Image section -->
+          <div class="h-64 w-full">
+            <img id="modal-tree-image" src="" alt="" class="w-full h-full object-cover rounded-t-lg">
+          </div>
+          
+          <!-- Content section -->
+          <div class="p-6">
+            <h3 id="modal-tree-name" class="text-2xl font-bold text-green-800 mb-2"></h3>
+            
+            <!-- Category and price stacked vertically -->
+            <div class="mb-4">
+              <div class="flex items-center mb-2">
+                <i class="fa-solid fa-tag text-green-600 mr-2"></i>
+                <div>
+                  <p class="text-sm text-gray-600">Category</p>
+                  <p id="modal-tree-category" class="font-medium text-green-700"></p>
+                </div>
+              </div>
+              
+              <div class="flex items-center">
+                <i class="fa-solid fa-tag text-green-600 mr-2"></i>
+                <div>
+                  <p class="text-sm text-gray-600">Price</p>
+                  <p id="modal-tree-price" class="font-bold text-lg text-green-700"></p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Description -->
+            <div class="mb-4">
+              <p class="text-sm text-gray-600 mb-1">Description</p>
+              <p id="modal-tree-description" class="text-gray-700"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- External JS -->
   <script src="script.js"></script>
