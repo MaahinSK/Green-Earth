@@ -9,7 +9,7 @@ let cart = [];
 async function loadCategories() {
   const res = await fetch("https://openapi.programming-hero.com/api/categories");
   const data = await res.json();
-  const categories = data.data;
+  const categories = data.categories; // ✅ matches structure
 
   // Add "All Trees" manually
   categoriesEl.innerHTML = `
@@ -18,8 +18,8 @@ async function loadCategories() {
   categories.forEach(cat => {
     categoriesEl.innerHTML += `
       <li>
-        <button class="category-btn w-full text-left px-3 py-2 rounded hover:bg-green-100" data-category="${cat.category}">
-          ${cat.category}
+        <button class="category-btn w-full text-left px-3 py-2 rounded hover:bg-green-100" data-category="${cat.category_name}">
+          ${cat.category_name}
         </button>
       </li>
     `;
@@ -39,7 +39,7 @@ async function loadCategories() {
 async function loadTrees(category = "all") {
   const res = await fetch("https://openapi.programming-hero.com/api/plants");
   const data = await res.json();
-  let trees = data.data;
+  let trees = data.plants; // ✅ matches structure
 
   if (category !== "all") {
     trees = trees.filter(tree => tree.category === category);
@@ -47,14 +47,14 @@ async function loadTrees(category = "all") {
 
   treeCardsEl.innerHTML = trees.map(tree => `
     <div class="bg-white shadow rounded-xl p-3">
-      <div class="bg-gray-200 h-40 rounded-md"></div>
-      <h4 class="font-bold mt-2">${tree.plant_name}</h4>
+      <img src="${tree.image}" alt="${tree.name}" class="w-full h-40 object-cover rounded-md">
+      <h4 class="font-bold mt-2">${tree.name}</h4>
       <p class="text-sm text-gray-600">${tree.description.slice(0, 70)}...</p>
       <span class="inline-block mt-2 bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">${tree.category}</span>
       <p class="font-bold mt-2">৳${tree.price}</p>
       <button class="mt-2 w-full bg-green-600 text-white rounded-full py-2 hover:bg-green-700 add-to-cart" 
-        data-id="${tree.plant_id}" 
-        data-name="${tree.plant_name}" 
+        data-id="${tree.id}" 
+        data-name="${tree.name}" 
         data-price="${tree.price}">
         Add to Cart
       </button>

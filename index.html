@@ -9,7 +9,7 @@
 
   <!-- Header -->
   <header class="bg-green-700 text-white flex justify-between items-center px-6 py-4">
-    <h1 class="text-xl font-bold">Green Earth</h1>
+    <h1 class="text-xl font-bold px-6">Green Earth</h1>
     <nav class="space-x-6">
       <a href="#" class="hover:underline">About</a>
       <a href="#" class="hover:underline">Gallery</a>
@@ -19,10 +19,21 @@
   </header>
 
   <!-- Hero -->
-  <section class="text-center py-12 bg-green-100">
-    <h2 class="text-3xl font-bold">Plant a Tree, Grow a Future</h2>
-    <p class="mt-2 text-gray-700">Join our mission to plant 1 million trees and make the Earth greener for future generations.</p>
-    <button class="mt-4 px-6 py-2 bg-yellow-400 rounded-full hover:bg-yellow-500">Get Involved</button>
+  <section class="relative flex justify-center items-center py-12 bg-green-100 overflow-hidden">
+    <!-- Left image -->
+    <img src="assets/hero-leaf1.png" alt="Left er Plant" 
+         class="absolute left-0 top-1/2 transform -translate-y-1/2 w-40 md:w-60">
+
+    <!-- Hero content -->
+    <div class="text-center max-w-2xl px-4">
+      <h2 class="text-3xl font-bold">Plant a Tree, Grow a Future</h2>
+      <p class="mt-2 text-gray-700">Join our mission to plant 1 million trees and make the Earth greener for future generations.</p>
+      <button class="mt-4 px-6 py-2 bg-yellow-400 rounded-full hover:bg-yellow-500">Get Involved</button>
+    </div>
+
+    <!-- Right image -->
+    <img src="assets/hero-leaf2.png" alt="Right eer Plant" 
+         class="absolute right-0 top-1/2 transform -translate-y-1/2 w-40 md:w-60">
   </section>
 
   <!-- Main Content -->
